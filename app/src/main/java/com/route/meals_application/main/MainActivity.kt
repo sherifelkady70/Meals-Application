@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,15 +24,20 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.route.meals_application.models.Category
 import com.route.meals_application.ui.theme.Meals_ApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val mealsViewModel by viewModels<MealViewModel>()
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             Meals_ApplicationTheme {
-
+                MainView(mealsViewModel)
             }
         }
     }
@@ -39,7 +45,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainView(viewModel : MealViewModel = hiltViewModel()){
     LaunchedEffect(key1 = Unit) {
-        viewModel
+        viewModel.getCategoryData()
     }
     LazyColumn (modifier = Modifier.fillMaxSize()) {
         items(viewModel.categoryList.size){ position ->
