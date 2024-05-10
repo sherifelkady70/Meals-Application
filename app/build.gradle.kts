@@ -69,6 +69,7 @@ dependencies {
     implementation ("com.github.bumptech.glide:compose:1.0.0-beta01")
     // Constrint Layout
     implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+    implementation(libs.androidx.constraintlayout)
     // Room
     val room_version = "2.6.1"
     implementation ("androidx.room:room-runtime:$room_version")
@@ -77,6 +78,7 @@ dependencies {
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-compiler:2.51.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)

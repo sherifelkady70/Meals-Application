@@ -8,39 +8,45 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.route.meals_application.models.Category
 import com.route.meals_application.ui.theme.Meals_ApplicationTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             Meals_ApplicationTheme {
-                MainMealView(Category("1","Title"
-                    ,"Description"))
+
             }
         }
     }
 }
-
 @Composable
-fun MainView(){
+fun MainView(viewModel : MealViewModel = hiltViewModel()){
+    LaunchedEffect(key1 = Unit) {
+        viewModel
+    }
     LazyColumn (modifier = Modifier.fillMaxSize()) {
-
+        items(viewModel.categoryList.size){ position ->
+            MainMealView(category = viewModel.categoryList[position])
+        }
     }
 }
-
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun MainMealView(category : Category){
@@ -76,9 +82,10 @@ fun MainMealView(category : Category){
     }
 }
 
+
 @Preview(showSystemUi = true , showBackground = true)
 @Composable
 fun PreviewMealView(){
-    MainMealView(Category("1","Title"
+    MainMealView(Category(1,"1","Title"
     ,"Description"))
 }
