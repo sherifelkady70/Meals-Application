@@ -67,6 +67,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     // Glide Image
     implementation ("com.github.bumptech.glide:compose:1.0.0-beta01")
+    // Constrint Layout
+    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     // Room
     val room_version = "2.6.1"
     implementation ("androidx.room:room-runtime:$room_version")
