@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.route.meals_application.models.Category
@@ -42,11 +43,13 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    lateinit var navHostController : NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             Meals_ApplicationTheme {
+                navHostController = rememberNavController()
                 MainContent()
             }
         }
