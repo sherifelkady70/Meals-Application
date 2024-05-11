@@ -111,45 +111,46 @@ fun MainMealView(category : Category){
     }
 }
 
-@OptIn(ExperimentalGlideComposeApi::class)
-@Composable
-fun MainMealView2(category : Category) {
-    Box(modifier = Modifier.fillMaxSize().padding(22.dp)){
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-    ) {
-        Row(modifier = Modifier.fillMaxWidth()) {
-            GlideImage(
-                model = category.strCategoryThumb,
-                contentDescription = "Meal Image", modifier =
-                Modifier
-                    .padding(4.dp)
-                    .width(120.dp)
-                    .height(120.dp)
-            )
+//@OptIn(ExperimentalGlideComposeApi::class)
+//@Composable
+//fun MainMealView2(category : Category) {
+//    Box(modifier = Modifier.fillMaxSize().padding(22.dp)){
+//    Card(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(8.dp)
+//            .size(150.dp)
+//    ) {
+//        Row(modifier = Modifier.fillMaxWidth()) {
+//            GlideImage(
+//                model = category.strCategoryThumb,
+//                contentDescription = "Meal Image", modifier =
+//                Modifier
+//                    .padding(4.dp)
+//                    .width(120.dp)
+//                    .height(120.dp)
+//            )
+//
+//            Column(modifier = Modifier.padding(4.dp)) {
+//                Text(
+//                    text = category.strCategory ?: " ",
+//                    modifier = Modifier
+//                        .padding(4.dp)
+//                )
+//
+//                Text(
+//                    text = category.strCategoryDescription ?: " ",
+//                    modifier = Modifier
+//                        .padding(4.dp)
+//                        .fillMaxWidth(), maxLines = 4
+//                )
+//            }
+//        }
+//    }
+//}
+//}
 
-            Column(modifier = Modifier.padding(4.dp)) {
-                Text(
-                    text = category.strCategory ?: " ",
-                    modifier = Modifier
-                        .padding(4.dp)
-                )
 
-                Text(
-                    text = category.strCategoryDescription ?: " ",
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .fillMaxWidth(), maxLines = 4
-                )
-            }
-        }
-    }
-}
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Preview(showSystemUi = true , showBackground = true)
 @Composable
 fun PreviewMealView(){
