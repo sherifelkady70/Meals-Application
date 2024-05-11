@@ -10,14 +10,15 @@ import com.route.meals_application.models.Category
 abstract class MealsDatabase : RoomDatabase(){
     abstract fun getMealsDao() : MealsDao
     companion object{
-        val INSTANCE : MealsDatabase?= null
+        private var INSTANCE : MealsDatabase?= null
         fun init(context:Context){
             if(INSTANCE==null){
-                Room.databaseBuilder(
+                INSTANCE = Room.databaseBuilder(
                     context
                     ,MealsDatabase::class.java
                     ,"Meals Database"
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
             }
         }
         fun getInstance(): MealsDatabase{

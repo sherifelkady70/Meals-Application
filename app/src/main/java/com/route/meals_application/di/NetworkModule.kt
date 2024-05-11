@@ -2,6 +2,7 @@ package com.route.meals_application.di
 
 import android.util.Log
 import com.route.meals_application.api.WebService
+import com.route.meals_application.contracts.NetworkHandler
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -55,5 +56,15 @@ object NetworkModule {
     @Provides
     fun providesWebServices(retrofit: Retrofit) : WebService{
         return retrofit.create(WebService::class.java)
+    }
+
+    @Provides
+    fun provideNetworkHandler() : NetworkHandler{
+        return object : NetworkHandler{
+            override fun isOnline() : Boolean {
+                return true
+            }
+
+        }
     }
 }

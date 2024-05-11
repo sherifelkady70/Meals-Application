@@ -1,10 +1,18 @@
 package com.route.meals_application.datasource.online
 
+import com.route.meals_application.api.WebService
 import com.route.meals_application.contracts.OnlineDatasource
 import com.route.meals_application.models.Category
+import javax.inject.Inject
 
-class OnlineDatasourceImpl : OnlineDatasource {
+class OnlineDatasourceImpl
+@Inject constructor(private val webService: WebService)
+    : OnlineDatasource {
     override suspend fun fetchMeals(): List<Category> {
-        TODO("Not yet implemented")
+      try {
+          return webService.fetchMeals().categories ?: listOf()
+      }catch (e:Exception){
+          throw e
+      }
     }
 }
