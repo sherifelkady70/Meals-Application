@@ -58,6 +58,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainContent(){
     MainView()
+
 }
 @Composable
 fun MainView(viewModel : MealViewModel = hiltViewModel()){
