@@ -1,5 +1,6 @@
 package com.route.meals_application.repository
 
+import android.util.Log
 import com.route.meals_application.api.WebService
 import com.route.meals_application.contracts.MealsRepository
 import com.route.meals_application.contracts.NetworkHandler
@@ -18,8 +19,10 @@ class MealsRepositoryImpl @Inject constructor(
         if (networkHandler.isOnline()) {
             val meals = onlineDatasource.fetchMeals()
             offLineDatasource.saveMeals(meals)
+            Log.e("cach data","${offLineDatasource.saveMeals(meals)}")
             return meals
         }
+        Log.e("cach data","${offLineDatasource.getCachedMeals()}")
         return offLineDatasource.getCachedMeals()
     }
 }

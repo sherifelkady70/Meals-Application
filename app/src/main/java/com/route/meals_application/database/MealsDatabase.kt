@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.route.meals_application.models.Category
 
-@Database([Category::class] , version = 1)
+@Database([Category::class] , version = 2)
 abstract class MealsDatabase : RoomDatabase(){
     abstract fun getMealsDao() : MealsDao
     companion object{
