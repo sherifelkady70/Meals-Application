@@ -20,7 +20,7 @@ import com.route.meals_application.models.Category
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DetailsScreen(){
-    MainDetailsView(Category(1,"1","title"
+    MainDetailsView(Category("1","title"
     ,"dsdsdsdsdsdsdsdsdsdsdsd"))
 }
 

@@ -9,6 +9,7 @@ class MealsApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        ConnectivityChecker.context = this
         MealsDatabase.init(this)
     }
 }

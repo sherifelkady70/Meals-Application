@@ -10,7 +10,7 @@ class OnlineDatasourceImpl
     : OnlineDatasource {
     override suspend fun fetchMeals(): List<Category> {
       try {
-          return webService.fetchMeals().categories ?: listOf()
+          return webService.fetchMeals().categories
       }catch (e:Exception){
           throw e
       }

@@ -3,6 +3,7 @@ package com.route.meals_application.datasource.offline
 import com.route.meals_application.contracts.OffLineDatasource
 import com.route.meals_application.database.MealsDatabase
 import com.route.meals_application.models.Category
+import com.route.meals_application.models.CategoryDB
 import javax.inject.Inject
 
 class OfflineDatasourceImpl @Inject constructor(
@@ -10,10 +11,14 @@ class OfflineDatasourceImpl @Inject constructor(
 )
     : OffLineDatasource {
     override suspend fun saveMeals(list: List<Category>) {
-        mealsDatabase.getMealsDao().saveMeals(list)
+        val categoryDB = list.map { it.toCategoryDB() }
+        mealsDatabase.getMealsDao().saveMeals(categoryDB)
     }
 
     override suspend fun getCachedMeals(): List<Category> {
-        return mealsDatabase.getMealsDao().getMeals()
+        val categoryDB = mealsDatabase.getMealsDao().getMeals().map {
+            it.toCategory()
+        }
+        return categoryDB
     }
 }

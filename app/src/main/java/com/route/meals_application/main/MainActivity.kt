@@ -159,7 +159,7 @@ fun MainMealView(category : Category){
 @Preview(showSystemUi = true , showBackground = true)
 @Composable
 fun PreviewMealView(){
-        MainMealView2(Category(1,"1","Title"
+        MainMealView2(Category("1","Title"
             ,"Descriptionasdasd" +
                     "asdasdasddasdasdasdasdasdasdasdasdasdasdasdas" +
                     "dasdasdasdasdasdasdasdasdasd" +
