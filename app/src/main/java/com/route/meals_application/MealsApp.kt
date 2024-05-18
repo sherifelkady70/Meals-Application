@@ -1,7 +1,7 @@
 package com.route.meals_application
 
 import android.app.Application
-import com.route.meals_application.database.MealsDatabase
+import com.route.meals_application.data.database.MealsDatabase
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
